@@ -6,17 +6,24 @@ class Admin::GenresController < ApplicationController
 
 
   def create
-    # １. データを新規登録するためのインスタンス作成
     @genre = Genre.new(genre_params)
-    # ２. データをデータベースに保存するためのsaveメソッド実行
     @genre.save
-    # ３. トップ画面へリダイレクト
-    redirect_to 'admin/genres'
+    redirect_to admin_genres_path
+  end
+
+  def edit
+   @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    Genre.update(list_params)
+    redirect_to admin_Genre_path(genre.id)
   end
 
   private
   # ストロングパラメータ
-  def _params
+  def genre_params
     params.require(:genre).permit(:name)
   end
 end

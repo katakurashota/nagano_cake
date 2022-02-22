@@ -1,0 +1,26 @@
+items index
+
+<div>商品一覧</div>
+<%= link_to "新規登録", new_admin_item %>
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <% @items.each do |item| %>
+  <tbody>
+    <tr>
+      <td></td>
+      <td><%= item.name %></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

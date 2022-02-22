@@ -14,7 +14,7 @@
   <tbody>
     <tr>
       <td><%= genre.name %></td>
-      <td>テスト</td>
+      <td><%= link_to "編集する", edit_admin_genre_path(genre.id) %></td>
     </tr>
   </tbody>
   <% end %>

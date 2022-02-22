@@ -1,0 +1,6 @@
+<div>商品新規登録</div>
+<%= form_with model:@item, url:'/admin/items', local:true do |f| %>
+<%= f.attachment_field :image %>
+<%= f.text_field :name %>
+<%= f.text_area :introduction %>
+<% end %>
