@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: 'admin/homes#top'
-  get 'home/about' => 'homes#about'
+  root to: 'public/homes#top'
+  get 'about' => 'public/homes#about'
+  get 'admin' => 'admin/homes#top'
   namespace :admin do
    resources :genres
    resources :items
+   resources :costomers
   end
 end

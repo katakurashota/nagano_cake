@@ -1,0 +1,25 @@
+<div class="container">
+会員一覧
+<div class="row">
+ <table class="table">
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+   </thead>
+  <% @customers.each do |costomer| %>
+  <tbody>
+    <tr>
+      <td><%= costomer.id %></td>
+      <td><%= link_to costomer.name,admin_costomer_path(costomer.id) %></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+ </div>
+</div>
