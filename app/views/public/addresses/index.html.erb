@@ -1,0 +1,32 @@
+<div class ="container">
+ <div class ="row">
+  <h5>配送先登録/一覧</h5>
+ </div>
+ <%= form_with model:@addresse, url:'/addresse', local:true do |f| %>
+ <div class="row">
+  <div class="col-md-2">
+   <p>郵便番号</p>
+  </div>
+  <div class="col-md-10">
+   <%= f.text_field :postal_code %>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-2">
+   <p>住所</p>
+  </div>
+  <div class="col-md-10">
+   <%= f.text_area :address %>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-md-2">
+   <p>宛名</p>
+  </div>
+  <div class="col-md-10">
+   <%= f.text_field :name %>
+   <%= f.submit '新規登録', class:"btn btn-sm btn-success" %>
+  </div>
+ </div>
+ <% end %>
+</div>
