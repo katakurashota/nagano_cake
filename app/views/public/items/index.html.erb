@@ -1,0 +1,12 @@
+<div class ="container">
+ <div class ="row">
+  <h5>商品一覧</h5>
+ </div>
+ <div class="row">
+  <div class="col-md-6 mx-auto">
+    <%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg' %>
+    <%= @item.name %>
+    <%= (@item.price*1.08).to_i %>
+  </div>
+</div>
+</div>

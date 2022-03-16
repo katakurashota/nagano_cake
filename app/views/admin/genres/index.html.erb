@@ -1,9 +1,9 @@
 <div>ジャンル一覧・追加</div>
-<%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
-<div>ジャンル名</div>
-<%= f.text_field :name %>
-<%= f.submit '新規登録' %>
-<% end %>
+  <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+  <div>ジャンル名</div>
+   <%= f.text_field :name %>
+   <%= f.submit '新規登録' %>
+   <% end %>
 <table>
   <thead>
     <tr>
@@ -18,4 +18,4 @@
     </tr>
   </tbody>
   <% end %>
-</table>
+ </table>

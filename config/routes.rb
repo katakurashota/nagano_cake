@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'customers/confirmation' => 'public/customers#confirmation'
   scope module: :public do
     resources :addresses
+    resources :items, :only => [:index, :show]
 
     resource :customers, path: "customers/my_page", :only => [:show]
     resource :customers, :only => [:edit, :update]
