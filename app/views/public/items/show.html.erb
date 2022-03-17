@@ -1,0 +1,15 @@
+<div class ="container">
+ <%= form_with model:@cart_item, url:'/cart_items', local:true do |f| %>
+ <div class ="row">
+  <div class="col-md-4">
+   <%= attachment_image_tag @item, :image, :fill, 200, 200, format: 'jpeg' %>
+  </div>
+  <div class="col-md-3">
+    <h4><%= @item.name %></h4>
+    <div><%= @item.introduction %></div>
+    <div>¥<%= (@item.price*1.08).to_i %>(税込)</div>
+    <div><%= f.select :amount, [['1',1], ['2',2], ['3',3]] %></div>
+    <div><%= f.submit 'カートに入れる', class:"btn btn-sm btn-success" %></div>
+ </div>
+ <% end %>
+</div>

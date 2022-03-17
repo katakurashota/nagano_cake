@@ -3,10 +3,14 @@
   <h5>商品一覧</h5>
  </div>
  <div class="row">
-  <div class="col-md-6 mx-auto">
-    <%= attachment_image_tag @item, :image, :fill, 100, 100, format: 'jpeg' %>
-    <%= @item.name %>
-    <%= (@item.price*1.08).to_i %>
+  <% @items.each do |item| %>
+  <div class="col-md-3">
+   <%= link_to item_path(item) do %>
+   <div><%= attachment_image_tag item, :image, :fill, 200, 100, format: 'jpeg' %></div>
+   <div><%= item.name %></div>
+    <% end %>
+    <div>¥<%= (item.price*1.08).to_i %></div>
   </div>
+  <% end %>
 </div>
 </div>

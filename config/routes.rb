@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :addresses
     resources :items, :only => [:index, :show]
+    resources :cart_items
 
     resource :customers, path: "customers/my_page", :only => [:show]
     resource :customers, :only => [:edit, :update]
