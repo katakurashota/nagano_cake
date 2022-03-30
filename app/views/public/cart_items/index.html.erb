@@ -2,21 +2,24 @@
  <div class ="row">
   <h5>ショッピングカート</h5>
  </div>
- <% @cart_items.each do |cart_item| %>
  <table class="table">
  <div class="row">
    <tr>
      <th>商品名</th>
-     <th>単価（税込</th>
+     <th>単価（税込)</th>
      <th>数量</th>
      <th>小計</th>
      <th></th>
    </tr>
+   <% @cart_items.each do |cart_item| %>
    <tr>
      <td><%= cart_item.item.name %></td>
      <td><%= (cart_item.item.price*1.08).to_i %></td>
+     <td></td>
+     <td></td>
+     <td><%= link_to "削除する", cart_item_path(cart_item), class:"btn btn-sm btn-danger" %></td>
    </tr>
+   <% end %>
    </div>
    </table>
-   <% end %>
 </div>
