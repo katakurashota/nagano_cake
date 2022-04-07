@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'admin' => 'admin/homes#top'
+  get 'thanks' => 'public/orders#thanks'
   get 'customers/confirmation' => 'public/customers#confirmation'
   scope module: :public do
     resources :addresses
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     resources :cart_items
     resources :orders
     post 'orders/confirm' => 'orders#confirm'
+    
 
     resource :customers, path: "customers/my_page", :only => [:show]
     resource :customers, :only => [:edit, :update]

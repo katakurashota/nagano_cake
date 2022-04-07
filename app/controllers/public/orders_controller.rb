@@ -13,7 +13,10 @@ class Public::OrdersController < ApplicationController
   def create
    order = Order.new(order_params)
    order.save
-   redirect_to orders_confirm_path
+   redirect_to thanks_path
+  end
+
+  def thanks
   end
 
   def confirm
@@ -23,10 +26,12 @@ class Public::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.name = current_customer.first_name + current_customer.last_name
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    @totalprice = 0
+    @postage = Order.where(postage: '800')
   end
 
   private
   def order_params
    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :postage, :invoice, :payment_method, :is_active)
   end
- end
+end
