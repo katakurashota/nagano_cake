@@ -13,7 +13,6 @@
       <th>小計</th>
      </tr>
     </thead>
-    <%= form_with model:@order, local:true do |f| %>
     <% @cart_items.each do |cart_item| %>
     <% item = cart_item.item %>
     <tbody>
@@ -41,13 +40,22 @@
   <%= @order.name %>
  </div>
  <div class="col-md-5 mx-auto">
- <%= f.hidden_field :payment_method, :value => @order.payment_method %>
- <%= f.hidden_field :postal_code, :value => @order.postal_code %>
- <%= f.hidden_field :address, :value => @order.address %>
- <%= f.hidden_field :name, :value => @order.name %>
- <%= f.hidden_field :postage, :value => @postage %>
- <%= f.hidden_field :invoice, :value => @invoice %>
-  <%= f.submit '注文を確定する', class:"btn btn-sm btn-success" %>
+  <%= form_with model:@order, local:true do |f| %>
+    <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :name, :value => @order.name %>
+    <%= f.hidden_field :postage, :value => @postage %>
+    <%= f.hidden_field :invoice, :value => @invoice %>
+    <% @cart_items.each do |cart_item| %>
+    <%= f.fields_for :order_details do |t| %>
+      <%= t.hidden_field :order_id, :value => @order %>
+      <%= t.hidden_field :price, :value => cart_item.item.price * 1.08 %>
+      <%= t.hidden_field :amount, :value => cart_item.amount %>
+      <%= t.hidden_field :item_id, :value => cart_item.item.id %>
+      <% end %>
+    <% end %>
+    <%= f.submit '注文を確定する', class:"btn btn-sm btn-success" %>
+  <% end %>
  </div>
- <% end %>
 </div>
