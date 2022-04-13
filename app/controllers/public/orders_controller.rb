@@ -4,6 +4,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+   @order = Order.find(params[:id])
+   @cart_items = CartItem.where(customer_id: current_customer.id)
+   @invoice = 0
+   @postage = 800
   end
 
   def new
@@ -24,10 +28,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
+   
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @invoice = 0
     @postage = 800
